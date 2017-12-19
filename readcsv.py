@@ -1,7 +1,7 @@
 import csv, openpyxl
 from openpyxl import Workbook
+#for an exported Ct csv
 #https://www.reddit.com/r/learnpython/comments/63lvf7/really_confused_openpyxl_keeps_overwriting_my/
-#the issue now is that it wants to overwrite the entire worksheet each time
 
 book = openpyxl.load_workbook("sample.xlsx")
 sheet = book.active

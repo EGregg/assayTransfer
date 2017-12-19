@@ -5,51 +5,46 @@ from openpyxl import Workbook
 
 book = openpyxl.load_workbook("sample.xlsx")
 sheet = book.active
-firstCol = 16
-secondCol =16
-thirdCol = 16
-fourthCol = 16
-count = 16
+count = 12
+count2 = 12
+count3 = 12
+count4 = 12
 
 book.save("sample.xlsx")
 
 
-with open('datacsv.csv') as csvfile:
+with open('first.csv') as csvfile:
 	readCSV = csv.reader(csvfile,delimiter=',')
 	for row in readCSV:
+		#print (row[1])
 		if row == "":
-			pass
+			print ("next")
 		else:
 			#print (row[0] + ",",row[1]+",",row[2])
 			#row[1] is where the name is, row[2] has the Ct
-			if "1e1" in row[1]:
-				print ("1e1 found " + row[2])
-				while sheet.cell(row=count,column=7).value != None:
+			if "1e1" in row[1].lower():
+				print ("1e1 found " + row[1])
+				while sheet.cell(row=count,column=5).value != None:
 					count += 1
-				sheet.cell(row=count,column=7).value = row[2]			
-				'''if sheet.cell(row=count,column=1).value != None:
-					sheet.cell(row=count,column=1).value = row[2]					
-					count += 1
-				else:
-					count += 1'''
+				sheet.cell(row=count,column=5).value = row[2]			
 
-			elif "1e2" in row[1]:
+			elif "1e2" in row[1].lower():
 				print ("1e2 found " + row[2])
-				sheet['F'+str(secondCol)] = row[2]
-				secondCol = int(secondCol) + 1
-				#book.save("sample.xlsx")
+				while sheet.cell(row=count2,column=6).value != None:
+					count2 += 1
+				sheet.cell(row=count2,column=6).value = row[2]	
 
-			elif "1e3" in row[1]:
+			elif "1e3" in row[1].lower():
 				print ("1e3 found " + row[2])
-				sheet['G'+str(thirdCol)] = row[2]
-				thirdCol = int(thirdCol) + 1
-				#book.save("sample.xlsx")
+				while sheet.cell(row=count3,column=7).value != None:
+					count3 += 1
+				sheet.cell(row=count3,column=7).value = row[2]	
 
-			elif "1e4" in row[1]:
+			elif "1e4" in row[1].lower():
 				print ("1e4 found " + row[2])
-				sheet['H'+str(fourthCol)] = row[2]
-				fourthCol = int(fourthCol) + 1
-				#book.save("sample.xlsx")
+				while sheet.cell(row=count4,column=8).value != None:
+					count4 += 1
+				sheet.cell(row=count4,column=8).value = row[2]	
 
 	book.save("sample.xlsx")
 
